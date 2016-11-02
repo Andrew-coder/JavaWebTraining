@@ -70,18 +70,22 @@ public class Model {
 
     /**
      * method which compare the specified number which guessed value
-     * @ param specified number
+     * @param number specified number
      * @return is it true number or not
      */
     public  boolean checkNumber(int number) {
-        if(number < minValue || number > maxValue)
+        if(number < minValue || number > maxValue) {
             return false;
-        if(number==guessValue)
+        }
+        if(number==guessValue) {
             return true;
-        if(number < guessValue)
+        }
+        if(number < guessValue) {
             minValue = number;
-        else
+        }
+        else {
             maxValue = number;
+        }
         return false;
     }
 
@@ -93,6 +97,16 @@ public class Model {
         attempts.add(new Attempt(value, minValue, maxValue));
     }
 
+    /**
+     * This method set range and automatically update guessed value
+     * @param min minimum of the range
+     * @param max maximum of the range
+     */
+    public void setRange(int min, int max) {
+        minValue = min;
+        maxValue = max;
+        guessValue = rand(minValue, maxValue);
+    }
 
     public int getGuessValue() {
         return guessValue;

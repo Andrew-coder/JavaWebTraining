@@ -15,6 +15,8 @@ public class View {
     public static final String CORRECT_VALUE = "Congratulations! You guessed the number!";
     public static final String INPUT_INT_DATA = "Input number ";
     public static final String WRONG_RANGE_DATA ="Wrong range! Repeat please!";
+    public static final String MINIMUM_RANGE_VALUE = "The minimum of range value";
+    public static final String MAXIMUM_RANGE_VALUE = "Tha maximum of range value";
     /**
      * Method for displaying messages on the console
      * @param message which will be displayed
@@ -25,8 +27,8 @@ public class View {
 
     /**
      * method which shows the guessed range
-     * @param min
-     * @param max
+     * @param min the minimum of the range
+     * @param max the maximum of the range
      */
     public void printBorders(int min, int max) {
         System.out.println(min + " - " + max + " (NOT INCLUSIVE!)");
