@@ -4,24 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static model.GlobalConstants.*;
+
 /**
  * Created by andri on 10/29/2016.
  */
 public class Model {
     /**
-     * Default values of minimum border for generating random numbers
-     */
-    public static final int RAND_MIN = 0;
-    /**
-     * Default values of maximum border for generating random numbers
-     */
-    public static final int RAND_MAX = 100;
-    /**
      * The value, which player will guess
      */
     private int guessValue;
 
+    /**
+     * The minimum value of range
+     */
     private int minValue;
+    /**
+     * The maximum value of range
+     */
     private int maxValue;
 
     /**
@@ -56,7 +56,7 @@ public class Model {
             max=tmp;
         }
         Random random = new Random();
-        return (random.nextInt(max) + min);
+        return (random.nextInt(max-1) + min+1);
     }
 
     /**
@@ -65,7 +65,7 @@ public class Model {
      */
     public static int rand() {
         Random random = new Random();
-        return (random.nextInt(RAND_MAX) + RAND_MIN);
+        return (random.nextInt(RAND_MAX-1) + RAND_MIN+1);
     }
 
     /**
@@ -93,7 +93,7 @@ public class Model {
         attempts.add(new Attempt(value, minValue, maxValue));
     }
 
-    /** getters and setters */
+
     public int getGuessValue() {
         return guessValue;
     }

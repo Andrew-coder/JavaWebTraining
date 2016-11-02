@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static model.GlobalConstants.*;
+
 /**
  * Created by andri on 10/30/2016.
  */
@@ -24,17 +26,23 @@ public class TestModel {
      */
     @Test
     public void testRandWithBorders() {
-        int randNumber = testModel.rand(1,10);
-        Assert.assertTrue(randNumber>=1 && randNumber<=10);
-    }
+        int randNumber = 0;
+        for(int i=0; i< 1000; ++i) {
+            randNumber = testModel.rand(-10,10);
+            Assert.assertTrue(randNumber > -10 && randNumber < 10);
+        }
+}
 
     /**
      * test method where checks is number in default range or not
      */
     @Test
     public void testDefaultRand() {
-        int randNumber = testModel.rand();
-        Assert.assertTrue(randNumber>=Model.RAND_MIN && randNumber<=Model.RAND_MAX);
+        int randNumber = 0;
+        for(int i=0;i<10000;++i) {
+            randNumber = testModel.rand();
+            Assert.assertTrue(randNumber>RAND_MIN && randNumber<RAND_MAX);
+        }
     }
 
     /**

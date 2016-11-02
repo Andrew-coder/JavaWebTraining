@@ -10,23 +10,27 @@ public class Attempt {
     private int value;
 
     /**
-     * borders of range
+     * The left border of the range
      */
     private int minValue;
+
+    /**
+     * The right border of the range
+     */
     private int maxValue;
 
     /**
      * constructor
-     * @param value
-     * @param minValue
-     * @param maxValue
+     * @param value which we will guess
+     * @param minValue the left border
+     * @param maxValue the right border
      */
     public Attempt(int value, int minValue, int maxValue) {
         this.value = value;
         this.minValue = minValue;
         this.maxValue = maxValue;
     }
-    /** getters and setters */
+
     public int getValue() {
         return value;
     }

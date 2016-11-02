@@ -1,4 +1,6 @@
+import controller.Controller;
 import model.Model;
+import view.View;
 
 /**
  class Application starts the less more game
