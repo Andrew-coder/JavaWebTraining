@@ -3,10 +3,9 @@ package model;
 import java.util.Date;
 
 /**
- * Created by andri on 11/5/2016.
+ * this class describes the record entity
  */
 public class Record {
-
     private String name;
     private String surname;
     private String patronymic;
@@ -24,21 +23,21 @@ public class Record {
     private String email;
     private String skype;
 
-    private int index;
-    private String city;
-    private int homeNumber;
-    private int apartmentNumber;
-    private String fullAddress;
+    private Address address;
 
     private Date creationDate;
     private Date lastChangeDate;
 
+    /**
+     * base constructor
+     */
     public Record() {
+        address = new Address();
     }
 
     public Record(String fullName, String nickName, String comment, Group group,
                   String homePhone, String cellPhone, String email, String skype,
-                  String fullAddress, Date creationDate, Date lastChangeDate) {
+                  Address address, Date creationDate, Date lastChangeDate) {
         this.fullName = fullName;
         this.nickName = nickName;
         this.comment = comment;
@@ -47,7 +46,7 @@ public class Record {
         this.cellPhone = cellPhone;
         this.email = email;
         this.skype = skype;
-        this.fullAddress = fullAddress;
+        this.address = address;
         this.creationDate = creationDate;
         this.lastChangeDate = lastChangeDate;
     }
@@ -59,7 +58,7 @@ public class Record {
                 .append("\ncomment: "+ comment).append("\n group: "+ group)
                 .append("\nhome phone: "+ homePhone).append("\n cell phone: "+cellPhone)
                 .append("\ne-mail: "+ email).append("\nSkype name: "+ skype)
-                .append("\naddress: "+ fullAddress).append("\nthe date of creating record: "+ creationDate)
+                .append("\naddress: "+ address).append("\nthe date of creating record: "+ creationDate)
                 .append("\nthe date of last record change: "+ lastChangeDate)).toString();
     }
 
@@ -73,22 +72,6 @@ public class Record {
 
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setHomeNumber(int homeNumber) {
-        this.homeNumber = homeNumber;
-    }
-
-    public void setApartmentNumber(int apartmentNumber) {
-        this.apartmentNumber = apartmentNumber;
     }
 
     public void setFullName(String fullName) {
@@ -121,15 +104,15 @@ public class Record {
         this.skype = skype;
     }
 
-    public void setFullAddress(String fullAddress) {
-        this.fullAddress = fullAddress;
-    }
-
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
     public void setLastChangeDate(Date lastChangeDate) {
         this.lastChangeDate = lastChangeDate;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

@@ -32,6 +32,7 @@ public class View {
      */
     public void printBorders(int min, int max) {
         System.out.println(min + " - " + max + " (NOT INCLUSIVE!)");
+        int a[]=new int[]{};
     }
 
     /**
@@ -43,5 +44,6 @@ public class View {
         for(Attempt attempt:attempts) {
             System.out.println("value: "+attempt.getValue()+ " " + attempt.getMinValue() + " - " + attempt.getMaxValue());
         }
+
     }
 }

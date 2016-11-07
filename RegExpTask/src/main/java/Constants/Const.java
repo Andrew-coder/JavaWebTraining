@@ -1,7 +1,7 @@
 package Constants;
 
 /**
- * Created by andri on 11/5/2016.
+ * this interface contains all text constants and regular expressions, which are necessary in program
  */
 public interface Const {
     //Regular expressions
@@ -10,7 +10,7 @@ public interface Const {
     String REGEX_PATRONYMIC="[A-Z]{1}[a-z]{1,}";
     String REGEX_NICK="\\w+";
     String REGEX_COMMENT="\\w{1,}(\\ \\w)*\\.{1}";
-    String REGEX_GROUP="[A-Za-z]+";
+    String REGEX_GROUP="T[I|V|M|R|A]";
     String REGEX_HOMEPHONE="/^07\\d{9}$/";
     String REGEX_CELLPHONE="^\\+[1-9]{1}[0-9]{3,14}$";
     String REGEX_SKYPE="[A_Za-z][-_.A_Za-z0-9]{5,31}";
