@@ -1,26 +1,26 @@
-public interface Product {
+interface Product {
     void productMethod();
 }
 
-public class ConcreteProduct implements Product {
+class ConcreteProduct implements Product {
     @Override
     public void productMethod() {
 
     }
 }
 
-public interface Creator {
+interface Creator {
     Product factoryMethod();
 }
 
-public class ConcreteCreator implements Creator {
+class ConcreteCreator implements Creator {
     @Override
     public Product factoryMethod() {
         return new ConcreteProduct();
     }
 }
 
-public class Main {
+class Main {
     public static void main(String[] args) {
         Creator creator = new ConcreteCreator();
         Product product = creator.factoryMethod();
