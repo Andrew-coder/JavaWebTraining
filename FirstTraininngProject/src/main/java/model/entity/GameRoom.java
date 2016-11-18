@@ -89,10 +89,7 @@ public class GameRoom {
      */
     public void setToys(List<Toy> toys) {
         for(Toy toy:toys){
-            if(allocatedCosts>=toy.getPrice()+calculateTotalToysPrice()) {
-                this.toys.add(toy);
-            }
-            else throw new RuntimeException("Not enough money!");
+            addToy(toy);
         }
     }
 
