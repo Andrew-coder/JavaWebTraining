@@ -10,6 +10,8 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 public class TestGameRoom {
     private GameRoom testModel;
 
@@ -25,9 +27,21 @@ public class TestGameRoom {
     }
 
     @Test
-    @Ignore
     public void testSortToys() {
-
+        Toy[] toys = {new Toy(30,ToyType.CUBE), new Toy(40,ToyType.BALL),
+                new Toy(25,ToyType.CAR), new Toy(35,ToyType.BALL)};
+        testModel.setToys(Arrays.asList(toys));
+        GameRoom room = new GameRoom();
+        room.setAllocatedCosts(300);
+        room.addToy(new Toy(40,ToyType.BALL));
+        room.addToy(new Toy(30,ToyType.CUBE));
+        room.addToy(new Toy(35,ToyType.BALL));
+        room.addToy(new Toy(25,ToyType.CAR));
+        testModel.sortToys(SortMethod.BY_TOYS_PRICE);
+        room.sortToys(SortMethod.BY_TOYS_PRICE);
+        for(int i=0;i<testModel.getToys().size();++i) {
+            Assert.assertEquals(testModel.getToys().get(i),room.getToys().get(i));
+        }
     }
 
     @Test

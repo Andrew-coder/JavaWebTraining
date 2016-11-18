@@ -30,6 +30,15 @@ public class Toy {
                                 .append(" ").append(price).toString();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Toy toy = (Toy) obj;
+        if (Integer.compare(toy.price, price) != 0) return false;
+        return getType() == ((Toy) obj).getType();
+    }
+
     public int getPrice() {
         return price;
     }
