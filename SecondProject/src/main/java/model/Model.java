@@ -1,26 +1,29 @@
 package model;
 
+import model.entity.Lexeme;
+import model.entity.Sentence;
 import model.entity.Text;
 import model.entity.Word;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by andri on 12/4/2016.
  */
 public class Model {
-    private Text text;
+    private TextComposite textComposite;
 
     public Model() {
-        text = new Text();
+        textComposite = new TextComposite();
     }
 
-    public Model(Text text) {
-        this.text = text;
+    public Model(TextComposite textComposite) {
+        this.textComposite = textComposite;
     }
 
-    public String findUniqueWord(){
+    public String findUniqueWord(Text text){
         List<Word> allWords = new ArrayList<>();
         if(text.getSentences().size()>1) {
             for(int i=1;i<text.getSentences().size();++i){
@@ -36,11 +39,22 @@ public class Model {
             return null;
     }
 
-    public Text getText() {
-        return text;
+    public TextComposite getTextComposite() {
+        return textComposite;
     }
 
     public void setText(Text text) {
-        this.text = text;
+        checkText(text);
+        textComposite.addLexeme(text.getTextComposite());
+    }
+
+    public void checkText(Text text) {
+        Objects.requireNonNull(text,"text is emty!");
+        if(text.getSentences().isEmpty())
+            throw new RuntimeException("text hasn't any sentences");
+        for (Sentence sentece: text.getSentences()) {
+            if(sentece.getWords().isEmpty())
+                throw new RuntimeException("sentence hasn't any words");
+        }
     }
 }

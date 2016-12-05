@@ -1,12 +1,14 @@
 package model.entity;
 
+import model.TextComposite;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by andri on 12/4/2016.
  */
-public class Sentence {
+public class Sentence implements Lexeme {
     private List<Lexeme> lexemes = new ArrayList<>();
 
     public Sentence() {
@@ -14,6 +16,19 @@ public class Sentence {
 
     public Sentence(String sentence) {
 
+    }
+
+    public TextComposite getSentenceComposite(){
+        TextComposite sentenceComposite = new TextComposite();
+        for(Lexeme lexeme:lexemes){
+            TextComposite lexemeComposite = new TextComposite();
+            if(lexeme instanceof Word)
+                lexemeComposite.addLexeme(((Word)lexeme).getWordComposite());
+            else if(lexeme instanceof Delimiter)
+                lexemeComposite.addLexeme(((Delimiter)lexeme).getDelimiterComposite());
+            sentenceComposite.addLexeme(lexemeComposite);
+        }
+        return sentenceComposite;
     }
 
     public List<Word> getWords(){

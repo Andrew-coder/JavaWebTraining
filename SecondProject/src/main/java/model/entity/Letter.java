@@ -1,9 +1,11 @@
 package model.entity;
 
+import model.TextComposite;
+
 /**
  * Created by andri on 12/4/2016.
  */
-public class Letter extends Symbol{
+public class Letter extends Symbol implements Lexeme{
     private LetterType type;
 
     public Letter() {
@@ -16,6 +18,12 @@ public class Letter extends Symbol{
     public Letter(Character character, LetterType type) {
         super(character);
         this.type = type;
+    }
+
+    public TextComposite getLetterComposite(){
+        TextComposite letterComposite = new TextComposite();
+        letterComposite.addLexeme(this);
+        return letterComposite;
     }
 
     @Override
@@ -32,5 +40,10 @@ public class Letter extends Symbol{
     @Override
     public int hashCode() {
         return type.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return getCharacter().toString();
     }
 }

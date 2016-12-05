@@ -25,10 +25,11 @@ public class Controller {
     public void processUser() {
         TextDao textDao = DaoFactory.getInstance().getTextDao();
         SentenceDao sentenceDao = DaoFactory.getInstance().getSentenceDao();
-
-        model.setText(new Text(sentenceDao.getSentencesFromText(
-                textDao.getWholeText())));
+        Text text =new Text(sentenceDao.getSentencesFromText(
+                textDao.getWholeText()));
+        model.setText(text);
+        view.printMessage(model.getTextComposite().toString());
         view.printMessage(View.SUCCESFULL_PARSE);
-        view.printMessage(model.findUniqueWord());
+        view.printMessage(model.findUniqueWord(text));
     }
 }

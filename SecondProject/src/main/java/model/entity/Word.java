@@ -1,5 +1,7 @@
 package model.entity;
 
+import model.TextComposite;
+
 import java.util.List;
 
 /**
@@ -13,6 +15,14 @@ public class Word implements Lexeme{
 
     public Word(List<Letter> letters) {
         this.letters = letters;
+    }
+
+    public TextComposite getWordComposite(){
+        TextComposite wordComposite = new TextComposite();
+        for(Letter letter:letters){
+            wordComposite.addLexeme(letter.getLetterComposite());
+        }
+        return wordComposite;
     }
 
     @Override
