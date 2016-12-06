@@ -3,11 +3,15 @@ package model.entity;
 import model.TextComposite;
 
 /**
- * Created by andri on 12/4/2016.
+ * this enum describes all possible delimiters in text
  */
 public enum Delimiter implements Lexeme{
-    DOT('.'), COLONS(':'), SEMICOLON(';'), QUESTION_MARK('?'), EXCLAMATION_MARK('!'), COMA(','), DASH('-');
+    DOT('.'), COLONS(':'), SEMICOLON(';'), QUESTION_MARK('?'), EXCLAMATION_MARK('!'),
+    COMA(','), DASH('-'), WHITE_SPACE(' '), ENTER('\n');
 
+    /**
+     * character which determines the delimiter
+     */
     private Character character;
 
     Delimiter(Character character) {
@@ -18,12 +22,21 @@ public enum Delimiter implements Lexeme{
         return character;
     }
 
+    /**
+     * this method generates composite for dilimiters
+     * @return composite for delimiter
+     */
     public TextComposite getDelimiterComposite(){
         TextComposite delimiterComposite = new TextComposite();
         delimiterComposite.addLexeme(this);
         return delimiterComposite;
     }
 
+    /**
+     * this method find the delimiter by appropriate character
+     * @param c character, by which the delimiter will be found
+     * @return the delimiter of character
+     */
     public static Delimiter getDelimiterAsChar(Character c){
         for(Delimiter delimiter:values()){
             if(delimiter.getDelimiter().equals(c))

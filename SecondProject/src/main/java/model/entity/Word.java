@@ -5,9 +5,12 @@ import model.TextComposite;
 import java.util.List;
 
 /**
- * Created by andri on 12/4/2016.
+ * this entity describes the word as a part of sentence
  */
 public class Word implements Lexeme{
+    /**
+     * letters which defines the word
+     */
     private List<Letter> letters;
 
     public Word() {
@@ -17,6 +20,10 @@ public class Word implements Lexeme{
         this.letters = letters;
     }
 
+    /**
+     * this method generate the composite for word
+     * @return composite for word
+     */
     public TextComposite getWordComposite(){
         TextComposite wordComposite = new TextComposite();
         for(Letter letter:letters){

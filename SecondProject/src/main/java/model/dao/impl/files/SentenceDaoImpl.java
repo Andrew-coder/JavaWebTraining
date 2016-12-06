@@ -11,14 +11,18 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * Created by andri on 12/4/2016.
+ * implementation of SentenceDao
  */
 public class SentenceDaoImpl implements SentenceDao {
     private static final String COMMON_DELIMITER = "[\\s,-:;.!?]";
     private static final String SENTENCE_DELIMITERS_PATTERN = "[.!?]";
     private static final String DELIMITERS_PATTERN = "[\\s,-:;]";
 
-
+    /**
+     * this method splits the text on sentences
+     * @param text which will be splitted
+     * @return the list of sentences
+     */
     @Override
     public List<Sentence> getSentencesFromText(String text) {
         List<Sentence> sentences = new ArrayList<>();
@@ -40,6 +44,11 @@ public class SentenceDaoImpl implements SentenceDao {
         return sentences;
     }
 
+    /**
+     * this sentence return the single sentence
+     * @param text the text of sentence
+     * @return the single sentence
+     */
     @Override
     public Sentence getSentenceFromText(String text){
         WordDao wordDao = new WordDaoImpl();
@@ -58,6 +67,7 @@ public class SentenceDaoImpl implements SentenceDao {
                     wordBuilder.trimToSize();
                     sentence.addLexeme(Delimiter.getDelimiterAsChar(currentSymbol));
                 }
+
                 else if(Pattern.matches(SENTENCE_DELIMITERS_PATTERN, String.valueOf(currentSymbol))){
                     sentence.addLexeme(new Word(wordDao.getLettersFromString(wordBuilder.toString())));
                     sentence.addLexeme(Delimiter.getDelimiterAsChar(currentSymbol));

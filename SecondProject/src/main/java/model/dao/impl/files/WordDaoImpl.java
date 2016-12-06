@@ -10,13 +10,18 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * Created by andri on 12/4/2016.
+ * implementation of WordDao
  */
 public class WordDaoImpl implements WordDao {
     private static final String DELIMITERS_PATTERN = "[\\s,-:;.!?]";
     private static final String VOWELS_PATTERN = "[aeiyouAEIYOU]";
     private static final String CONSONANTS_PATTERN = "[qwrtpsdfghjklzxcvbnmQWRTPSDFGHJKLZXCVBNM]";
 
+    /**
+     * this method split sentence on words
+     * @param text of sentence
+     * @return the list of words
+     */
     @Override
     public List<Word> getWordsFromText(String text) {
         List<Word> words = new ArrayList<>();
@@ -36,6 +41,11 @@ public class WordDaoImpl implements WordDao {
         return words;
     }
 
+    /**
+     * this method split word on letters
+     * @param text of word
+     * @return the list of letters
+     */
     @Override
     public List<Letter> getLettersFromString(String text) {
         List<Letter> letters = new ArrayList<>();

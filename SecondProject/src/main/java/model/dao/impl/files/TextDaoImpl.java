@@ -6,9 +6,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 /**
- * Created by andri on 12/4/2016.
+ * implementation of TextDao
  */
 public class TextDaoImpl implements TextDao {
+    /**
+     * this method returns all text in string format
+     * @return the string with text
+     */
     @Override
     public String getWholeText() {
         StringBuilder textBuilder= new StringBuilder();

@@ -5,8 +5,12 @@ import model.entity.Sentence;
 import java.util.List;
 
 /**
- * Created by andri on 12/4/2016.
+ * dao interface for Text entity
  */
 public interface TextDao {
+    /**
+     * this method returns all text in string format
+     * @return the string with text
+     */
     String getWholeText();
 }

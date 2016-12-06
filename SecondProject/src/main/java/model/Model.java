@@ -13,6 +13,9 @@ import java.util.Objects;
  * Created by andri on 12/4/2016.
  */
 public class Model {
+    /**
+     * text composite
+     */
     private TextComposite textComposite;
 
     public Model() {
@@ -23,6 +26,11 @@ public class Model {
         this.textComposite = textComposite;
     }
 
+    /**
+     * this method which finds the unique word from 1st sentence in a whole text
+     * @param text text in which the word will be found
+     * @return the unique word
+     */
     public String findUniqueWord(Text text){
         List<Word> allWords = new ArrayList<>();
         if(text.getSentences().size()>1) {
@@ -39,6 +47,10 @@ public class Model {
             return null;
     }
 
+    /**
+     * this method returns the text composite from the Text class
+     * @return
+     */
     public TextComposite getTextComposite() {
         return textComposite;
     }
@@ -48,6 +60,10 @@ public class Model {
         textComposite.addLexeme(text.getTextComposite());
     }
 
+    /**
+     * this method checks the text
+     * @param text
+     */
     public void checkText(Text text) {
         Objects.requireNonNull(text,"text is emty!");
         if(text.getSentences().isEmpty())

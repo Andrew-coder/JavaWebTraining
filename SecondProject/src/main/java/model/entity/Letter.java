@@ -3,16 +3,15 @@ package model.entity;
 import model.TextComposite;
 
 /**
- * Created by andri on 12/4/2016.
+ * this entity describes the letter as a part of the word
  */
 public class Letter extends Symbol implements Lexeme{
+    /**
+     * description of the letters type
+     */
     private LetterType type;
 
     public Letter() {
-    }
-
-    public Letter(LetterType type) {
-        this.type = type;
     }
 
     public Letter(Character character, LetterType type) {
@@ -20,6 +19,10 @@ public class Letter extends Symbol implements Lexeme{
         this.type = type;
     }
 
+    /**
+     * this methods generate composite for letter
+     * @return composite for letter
+     */
     public TextComposite getLetterComposite(){
         TextComposite letterComposite = new TextComposite();
         letterComposite.addLexeme(this);
@@ -33,7 +36,7 @@ public class Letter extends Symbol implements Lexeme{
         if(!this.character.equals(((Letter) o).character)) return false;
         Letter letter = (Letter) o;
 
-        return type == letter.type;
+        return type.equals(letter.type);
 
     }
 

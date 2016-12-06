@@ -6,18 +6,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by andri on 12/4/2016.
+ * this entity describes the sentence as a part of text
  */
 public class Sentence implements Lexeme {
-    private List<Lexeme> lexemes = new ArrayList<>();
+    private List<Lexeme> lexemes;
 
     public Sentence() {
+        lexemes = new ArrayList<>();
     }
 
     public Sentence(String sentence) {
 
     }
 
+    /**
+     * this method generate the composite for sentence
+     * @return composite for sentence
+     */
     public TextComposite getSentenceComposite(){
         TextComposite sentenceComposite = new TextComposite();
         for(Lexeme lexeme:lexemes){
@@ -31,6 +36,10 @@ public class Sentence implements Lexeme {
         return sentenceComposite;
     }
 
+    /**
+     * this method returns all words from sentence
+     * @return words
+     */
     public List<Word> getWords(){
         List<Word> words = new ArrayList<>();
         for(Lexeme lexeme: lexemes){
@@ -40,6 +49,10 @@ public class Sentence implements Lexeme {
         return words;
     }
 
+    /**
+     * this method returns all delimiters from sentence
+     * @return delimiters
+     */
     public List<Delimiter> getDelimiters(){
         List<Delimiter> delimiters = new ArrayList<>();
         for(Lexeme lexeme: lexemes){
@@ -49,6 +62,10 @@ public class Sentence implements Lexeme {
         return delimiters;
     }
 
+    /**
+     * this method adds given lexeme in lexeme list
+     * @param lexeme which will be added
+     */
     public void addLexeme(Lexeme lexeme){
         lexemes.add(lexeme);
     }

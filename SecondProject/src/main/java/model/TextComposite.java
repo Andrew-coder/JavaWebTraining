@@ -7,15 +7,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by andri on 12/5/2016.
+ * this class stores text in composite format
  */
 public class TextComposite implements Lexeme {
+    /**
+     * list of embedded components
+     */
     private List<Lexeme> lexemeComponents;
 
     public TextComposite() {
         lexemeComponents = new ArrayList<>();
     }
 
+    /**
+     * this method adds the lexeme to the list of components
+     * @param lexeme lexeme which will be added
+     */
     public void addLexeme(Lexeme lexeme){
         lexemeComponents.add(lexeme);
     }

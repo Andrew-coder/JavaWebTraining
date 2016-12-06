@@ -1,7 +1,7 @@
 package model.entity;
 
 /**
- * Created by andri on 12/4/2016.
+ * this is a frame interface for association all ellements of the text in single structure
  */
 public interface Lexeme {
     @Override

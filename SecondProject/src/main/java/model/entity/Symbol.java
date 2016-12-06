@@ -1,9 +1,12 @@
 package model.entity;
 
 /**
- * Created by andri on 12/4/2016.
+ * this class defines the base entity for letter
  */
 public class Symbol {
+    /**
+     * character which defines the symbol
+     */
     protected Character character;
 
     public Symbol() {

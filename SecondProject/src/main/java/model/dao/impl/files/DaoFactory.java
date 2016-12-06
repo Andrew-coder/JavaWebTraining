@@ -7,18 +7,27 @@ import model.dao.WordDao;
 import java.io.*;
 import java.util.Properties;
 
-
 /**
- * Created by andri on 12/4/2016.
+ * dao factory as a singleton
  */
 public class DaoFactory {
+    /**
+     * path to the property file
+     */
     private final String propertyPath="src/main/resources/config.properties";
+
+    /**
+     * single instance of factory
+     */
     private static DaoFactory instance;
 
     private DaoFactory(){
-
     }
 
+    /**
+     * this method returns the only instance of factory
+     * @return instance of factory
+     */
     public static DaoFactory getInstance(){
         if(instance==null){
             instance = new DaoFactory();
@@ -26,6 +35,10 @@ public class DaoFactory {
         return instance;
     }
 
+    /**
+     * this method generates the reader for reading text from file
+     * @return the bufered reader
+     */
     public BufferedReader getReader(){
         BufferedReader reader = null;
         Properties property = new Properties();
@@ -33,7 +46,7 @@ public class DaoFactory {
             FileInputStream stream = new FileInputStream(propertyPath);
             property.load(stream);
             String path = property.getProperty("file.path");
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
             File f = new File(path);
             reader = new BufferedReader(new FileReader(f));
         }
@@ -43,14 +56,23 @@ public class DaoFactory {
         return reader;
     }
 
+    /**
+     * @return the implementation of SentenceDao
+     */
     public SentenceDao getSentenceDao(){
         return new SentenceDaoImpl();
     }
 
+    /**
+     * @return the implementation of WordDao
+     */
     public WordDao getWordDao(){
         return new WordDaoImpl();
     }
 
+    /**
+     * @return the implementation of TextDao
+     */
     public TextDao getTextDao(){
         return new TextDaoImpl();
     }
