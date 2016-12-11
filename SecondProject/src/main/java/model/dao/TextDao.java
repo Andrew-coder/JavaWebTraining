@@ -1,9 +1,5 @@
 package model.dao;
 
-import model.entity.Sentence;
-
-import java.util.List;
-
 /**
  * dao interface for Text entity
  */

@@ -6,4 +6,5 @@ package model.entity;
 public interface Lexeme {
     @Override
     String toString();
+    LexemeType getLexemeType();
 }

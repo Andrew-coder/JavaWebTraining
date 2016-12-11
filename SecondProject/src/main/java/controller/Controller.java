@@ -1,19 +1,21 @@
 package controller;
 
 import model.Model;
-import model.dao.SentenceDao;
+import model.dao.LexemeDao;
 import model.dao.TextDao;
-import model.dao.WordDao;
 import model.dao.impl.files.DaoFactory;
-import model.dao.impl.files.TextDaoImpl;
-import model.entity.Sentence;
-import model.entity.Text;
+import model.entity.LexemeContainer;
+import model.entity.LexemeType;
 import view.View;
 
 /**
  * Created by andri on 12/4/2016.
  */
 public class Controller {
+    /**
+     * instance of dao factory
+     */
+    DaoFactory factory;
     /**
      * the instance of model where stores all business logic
      */
@@ -31,20 +33,20 @@ public class Controller {
     public Controller(Model model, View view) {
         this.model = model;
         this.view = view;
+        factory = DaoFactory.getInstance();
     }
 
     /**
      * the method which sets the sequence of calls in program
      */
     public void processUser() {
-        TextDao textDao = DaoFactory.getInstance().getTextDao();
-        SentenceDao sentenceDao = DaoFactory.getInstance().getSentenceDao();
-        Text text =new Text(sentenceDao.getSentencesFromText(
-                textDao.getWholeText()));
-        model.setText(text);
-        view.printMessage(model.getTextComposite().toString());
+        TextDao textDao = factory.getTextDao();
+        LexemeDao lexemeDao = factory.getLexemeDao();
+        String text = textDao.getWholeText();
+        model.setContainer( lexemeDao.getAllLexems(text));
+        view.printMessage(model.getContainer().toString());
         view.printMessage(View.SUCCESFULL_PARSE);
-        String uniqueWord = model.findUniqueWord(text);
+        String uniqueWord = model.findUniqueWord();
         if(uniqueWord!= null) {
             view.printMessage(uniqueWord);
         }

@@ -1,8 +1,7 @@
 package model.dao.impl.files;
 
-import model.dao.SentenceDao;
+import model.dao.LexemeDao;
 import model.dao.TextDao;
-import model.dao.WordDao;
 
 import java.io.*;
 import java.util.Properties;
@@ -28,7 +27,7 @@ public class DaoFactory {
      * this method returns the only instance of factory
      * @return instance of factory
      */
-    public static DaoFactory getInstance(){
+    public synchronized static DaoFactory getInstance(){
         if(instance==null){
             instance = new DaoFactory();
         }
@@ -57,23 +56,13 @@ public class DaoFactory {
     }
 
     /**
-     * @return the implementation of SentenceDao
-     */
-    public SentenceDao getSentenceDao(){
-        return new SentenceDaoImpl();
-    }
-
-    /**
-     * @return the implementation of WordDao
-     */
-    public WordDao getWordDao(){
-        return new WordDaoImpl();
-    }
-
-    /**
      * @return the implementation of TextDao
      */
     public TextDao getTextDao(){
         return new TextDaoImpl();
+    }
+
+    public LexemeDao getLexemeDao(){
+        return new LexemeDaoImpl();
     }
 }

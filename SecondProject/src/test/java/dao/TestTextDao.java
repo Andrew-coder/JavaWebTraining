@@ -1,10 +1,13 @@
-package model.dao;
+package dao;
+
+import model.dao.TextDao;
 import model.dao.impl.files.DaoFactory;
 import model.dao.impl.files.TextDaoImpl;
-import org.junit.Assert;
+import model.entity.LexemeContainer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.BufferedReader;
@@ -13,14 +16,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
-/**
- * Created by andri on 12/5/2016.
- */
-@RunWith(MockitoJUnitRunner.class)
-public class TestTextDaoImpl {
+public class TestTextDao {
+
     FileReader fileReader;
     BufferedReader reader;
     DaoFactory factory;
@@ -35,7 +34,6 @@ public class TestTextDaoImpl {
     @Test
     public void testGetWholeText()throws IOException {
         when(factory.getReader()).thenReturn(reader);
-        //verify(reader).readLine();
         when(textDao.getWholeText()).thenReturn("Example of string.");
         assertEquals("Example of string.", textDao.getWholeText());
     }
