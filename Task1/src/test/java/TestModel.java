@@ -1,10 +1,19 @@
+import model.Attempt;
 import model.Model;
 import org.junit.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static model.GlobalConstants.*;
+
+import static org.mockito.Mockito.*;
 
 /**
  * Created by andri on 10/30/2016.
@@ -18,7 +27,8 @@ public class TestModel {
      */
     @Before
     public void initialize() {
-        testModel = new Model();
+        testModel = mock(Model.class);
+        testModel.setAttempts(new ArrayList<>());
     }
 
     /**

@@ -3,6 +3,7 @@ package controller;
 import model.Model;
 import view.View;
 
+import java.io.InputStream;
 import java.util.Scanner;
 
 /**
@@ -32,25 +33,31 @@ public class Controller {
      * the method which sets the sequence of calls in program
      */
     public void processUser() {
+        InputStream inputStream = System.in;
         //setting range
         view.printMessage(View.GAME_INFO);
         Scanner scanner = new Scanner(System.in);
         int minimumValue = 0;
         int maximumValue = 0;
+
         do {
             view.printMessage(View.INPUT_INT_DATA+View.MINIMUM_RANGE_VALUE);
-            minimumValue = inputIntValueWithScanner(scanner);
+            minimumValue = inputIntValueWithScanner(inputStream);
             view.printMessage(View.INPUT_INT_DATA+View.MAXIMUM_RANGE_VALUE);
-            maximumValue = inputIntValueWithScanner(scanner);
+            maximumValue = inputIntValueWithScanner(inputStream);
         }while (minimumValue>=maximumValue);
         model.setRange(minimumValue, maximumValue);
 
         //guessing the value
+        guessingProcess(inputStream);
+    }
+
+    public void guessingProcess(InputStream in) {
         int inputNumber = 0;
         do {
             view.printMessage(View.INPUT_INT_DATA);
             view.printBorders(model.getMinValue(), model.getMaxValue());
-            inputNumber = inputIntValueInRange(scanner);
+            inputNumber = inputIntValueInRange(in);
             model.addToStatistic(inputNumber);
         }while(!model.checkNumber(inputNumber));
         view.printMessage(View.CORRECT_VALUE);
@@ -59,10 +66,11 @@ public class Controller {
 
     /**
      * method where implements the input of number from console with scanner
-     * @param sc Scanner with the help of which we implement the reading
+     * @param inputStream stream with the help of which we implement the reading
      * @return the read off number
      */
-    public int inputIntValueWithScanner(Scanner sc) {
+    public int inputIntValueWithScanner(InputStream inputStream) {
+        Scanner sc = new Scanner(inputStream);
         while( ! sc.hasNextInt()) {
             view.printMessage(view.WRONG_INPUT + view.INPUT_INT_DATA);
             sc.next();
@@ -73,10 +81,11 @@ public class Controller {
     /**
      * method where implements the input of number from console
      * in range with all necessary checks
-     * @param sc Scanner with the help of which we implement the reading
+     * @param stream strwam with the help of which we implement the reading
      * @return the read off value
      */
-    public int inputIntValueInRange(Scanner sc) {
+    public int inputIntValueInRange(InputStream stream) {
+        Scanner sc = new Scanner(stream);
         int res=0;
         while( true ) {
             // check int - value
